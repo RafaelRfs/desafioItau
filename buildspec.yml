@@ -10,15 +10,17 @@ phases:
       - 
   pre_build:
     commands:
-      - echo initializing a new Pipeline
+      - echo initializing a new Process
   build:
     commands:
-      - mvn  install
+      - mvn clean install
     finally:
+      - ls
       - echo build stage sucess ended
   post_build:
     commands:
       - mv target/desafio.itau-0.0.1-SNAPSHOT.jar ./
+      - ls
 
 artifacts:
   files:
