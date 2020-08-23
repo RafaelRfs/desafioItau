@@ -1,0 +1,159 @@
+{
+	"info": {
+		"_postman_id": "02d464a0-854f-4be0-8ca8-8035f68b1047",
+		"name": "AWS - Desafio - Itau",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Inserir Transacao",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"valor\": 100,\r\n    \"dataHora\": \"2020-08-07T10:11:12.000Z\"\r\n }\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "13.59.158.37:8080/v1/desafio/transacao",
+					"host": [
+						"13",
+						"59",
+						"158",
+						"37"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"desafio",
+						"transacao"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "13.59.158.37:8080/v1/desafio/estatistica",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "13.59.158.37:8080/v1/desafio/estatistica",
+					"host": [
+						"13",
+						"59",
+						"158",
+						"37"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"desafio",
+						"estatistica"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "13.59.158.37:8080/v1/desafio/transacao",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "13.59.158.37:8080/v1/desafio/transacao",
+					"host": [
+						"13",
+						"59",
+						"158",
+						"37"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"desafio",
+						"transacao"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Metrics",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"valor\": 100,\r\n    \"dataHora\": \"2020-08-07T10:11:12.000Z\"\r\n }\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://13.59.158.37:8080/actuator/metrics/http.server.requests",
+					"protocol": "http",
+					"host": [
+						"13",
+						"59",
+						"158",
+						"37"
+					],
+					"port": "8080",
+					"path": [
+						"actuator",
+						"metrics",
+						"http.server.requests"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "HealtCheck",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"valor\": 100,\r\n    \"dataHora\": \"2020-08-07T10:11:12.000Z\"\r\n }\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://13.59.158.37:8080/actuator/health",
+					"protocol": "http",
+					"host": [
+						"13",
+						"59",
+						"158",
+						"37"
+					],
+					"port": "8080",
+					"path": [
+						"actuator",
+						"health"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
