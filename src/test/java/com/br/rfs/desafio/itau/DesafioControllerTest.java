@@ -1,7 +1,5 @@
 package com.br.rfs.desafio.itau;
-/*
- * 
- * Teste de integração - Descomentar para rodar local
+
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -24,13 +22,13 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.br.rfs.desafio.itau.constants.RequestEntrypointConstants;
-*/
 
-//@RunWith(SpringJUnit4ClassRunner.class)
-//@ContextConfiguration(classes = { Application.class })
-//@WebAppConfiguration
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = { Application.class })
+@WebAppConfiguration
 public class DesafioControllerTest {
-	/*
+	
 	@Autowired
 	private WebApplicationContext wac;
 
@@ -55,5 +53,5 @@ public class DesafioControllerTest {
 	      .andExpect(status().isOk());
 	}
 	
-	*/
+	
 }
