@@ -11,8 +11,6 @@ phases:
   pre_build:
     commands:
       - echo initializing a new Pipeline
-    finally:
-      - echo This always runs even if the login command fails 
   build:
     commands:
       - mvn  install
