@@ -13,7 +13,3 @@ phases:
     commands:
     - echo " Starting post build phase"
     - mv target/*.jar ./
-    
-  artifacts:
-    files:
-      - *.jar
