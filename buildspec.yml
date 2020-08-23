@@ -1,6 +1,6 @@
 version: 0.2
 phases:
-  pre-build:
+  pre_build:
     commands:
     - echo "Starting the Pipeline"
      
@@ -9,7 +9,10 @@ phases:
     - echo " Initializing build process aplication" 
     - mvn clean install
   
-  post-build:
+  post_build:
     commands:
     - echo " Starting post build phase"
     - mv target/*.jar ./
+  artifacts:
+    -file:
+      -*.jar
