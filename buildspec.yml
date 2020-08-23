@@ -1,18 +1,31 @@
 version: 0.2
+
+env:
+  variables:
+    JAVA_HOME: "/usr/lib/jvm/java-8-openjdk-amd64"
+  
 phases:
+  install:
+    commands:
+      - echo "Starting a new Pipeline:  stage Prepare 
+      - apt-get update -y
+      - apt-get install -y maven
+    finally:
+      - 
   pre_build:
     commands:
-    - echo "Starting the Pipeline"
-     
+      - echo initializing a new Pipeline
+    finally:
+      - echo This always runs even if the login command fails 
   build:
     commands:
-    - echo " Initializing build process aplication" 
-    - mvn clean install
-  
+      - echo [+]Build Stage
+      - mvn clean install
+    finally:
+      - echo build stage sucess ended
   post_build:
     commands:
-    - echo " Starting post build phase"
-    - mv target/*.jar ./
+      - mv target/*.jar ./
   artifacts:
-    -file:
-      -*.jar
+    files:
+      - desafio.itau-0.0.1-SNAPSHOT.jar
