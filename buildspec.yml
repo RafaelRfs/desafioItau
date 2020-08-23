@@ -7,7 +7,7 @@ env:
 phases:
   install:
     commands:
-      - echo "Starting a new Pipeline:  stage Prepare 
+      - echo "Starting a new Pipeline:  stage Prepare "
       - apt-get update -y
       - apt-get install -y maven
     finally:
