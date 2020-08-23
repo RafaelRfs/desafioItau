@@ -15,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
 @Data
-public class DesafioRequest implements Serializable {
+public class TransactionRequest implements Serializable {
 	
 	@NotNull
 	private BigDecimal valor;

@@ -14,40 +14,42 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.br.rfs.desafio.itau.business.DesafioBO;
 import com.br.rfs.desafio.itau.constants.RequestEntrypointConstants;
-import com.br.rfs.desafio.itau.domain.DesafioRequest;
+import com.br.rfs.desafio.itau.domain.TransactionRequest;
 import com.br.rfs.desafio.itau.domain.DesafioResponse;
+import com.br.rfs.desafio.itau.handler.DeleteTransaction;
 import com.br.rfs.desafio.itau.handler.PostTransaction;
+import com.br.rfs.desafio.itau.handler.StatisticsTransaction;
+
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @RequestMapping(RequestEntrypointConstants.PATH_URL)
-@Slf4j
 public class DesafioController {
 	
 	@Autowired
 	private DesafioBO desafioBO;
 	
-	private List<DesafioRequest> desafioRequest = new ArrayList<>();
+	private List<TransactionRequest> desafioRequestList;
 	
 	@PostMapping(RequestEntrypointConstants.TRANSACTION_URL)
-	public ResponseEntity<Object> postTransaction(@Valid @RequestBody DesafioRequest request){
+	public ResponseEntity<Object> postTransaction(@Valid @RequestBody TransactionRequest request){
 		DesafioResponse<Object> response = new DesafioResponse<>();
-		PostTransaction post = new PostTransaction();
-		desafioBO.process(post, request, response, desafioRequest);
-		return new ResponseEntity<Object>(desafioRequest, response.getStatusCode());
+		desafioRequestList = desafioBO.process(new PostTransaction(), request, response, desafioRequestList);
+		return new ResponseEntity<Object>(response.getData(), response.getStatusCode());
 	}
 	
 	@GetMapping(RequestEntrypointConstants.STATISTICS_URL)
 	public ResponseEntity<Object> getStatistics(){
 		DesafioResponse<Object> response = new DesafioResponse<>();
+		desafioBO.process(new StatisticsTransaction(), null, response, desafioRequestList);
 		return new ResponseEntity<Object>(response.getData(), response.getStatusCode());
 	}
 	
 	@DeleteMapping(RequestEntrypointConstants.TRANSACTION_URL)
 	public ResponseEntity<Object> deleteTransaction(){
-		log.info("Transação excluida com sucesso!");
-		desafioRequest = new ArrayList<>();
-		return new ResponseEntity<>(null,HttpStatus.NO_CONTENT);
+		DesafioResponse<Object> response = new DesafioResponse<>();
+		desafioRequestList = desafioBO.process(new DeleteTransaction(), null, response, desafioRequestList);
+		return new ResponseEntity<>(response.getData(),response.getStatusCode());
 	}
 
 }
